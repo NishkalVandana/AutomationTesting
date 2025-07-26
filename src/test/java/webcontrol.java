@@ -19,7 +19,6 @@ public class webcontrol {
     public void test1() {
         WebElement dropdown = driver.findElement(By.xpath("/html/body/main/div/form/div/div[2]/label[1]/select"));
         Select select = new Select(dropdown);
-        String option = "Two";
         select.selectByIndex(2);
         Assert.assertEquals(select.getFirstSelectedOption().getDomAttribute("value"), "2");
 
