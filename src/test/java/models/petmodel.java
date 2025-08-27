@@ -1,8 +1,6 @@
 package models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import models.Category;
-import java.util.Locale;
 
 @JsonIgnoreProperties({"photoUrls", "tags"})
 public class petmodel {
