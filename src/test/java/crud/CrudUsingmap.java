@@ -3,19 +3,20 @@ package crud;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import static io.restassured.RestAssured.*;
-
 public class CrudUsingmap {
     @BeforeTest
     public void setup(){
         RestAssured.requestSpecification = new RequestSpecBuilder().
-                setBaseUri("https://petstore.swagger.io/v2").
+                setBaseUri("https://petstore.swagger.io").
                 setBasePath("/v2").setContentType("application/json").build();
     }
+    @Test
     public void testAllMethods(){
         Map<String ,Object> petdata=getpetdata();
 
@@ -29,10 +30,10 @@ public class CrudUsingmap {
         petdata.put("name","Robert");
         petdata.put("id",1);
         String newpetname=given().body(petdata).when().put("/pet").path("name");
-        System.out.println("Name of pet with id "+newid+"changed to "+newpetname);
+        System.out.println("Name of pet with id "+newid+" changed to "+newpetname);
 
         //delete method
-        delete("pet/"+newid).then().statusCode(200);
+        delete("pet/1").then().statusCode(200);
     }
 
     public Map<String,Object> getpetdata(){
